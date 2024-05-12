@@ -2,15 +2,26 @@
 -- TODO Test
 --
 return {
+  -- tokyonight colorscheme
   {
-    "L3MON4D3/LuaSnip",
-    config = function(plugin, opts)
-      -- include the default astronvim config that calls the setup call
-      require "astronvim.plugins.configs.luasnip"(plugin, opts)
-      -- load snippets paths
-      require("luasnip.loaders.from_vscode").lazy_load {
-        paths = { vim.fn.stdpath "config" .. "/snippets" },
+    "tiagovla/tokyodark.nvim",
+  },
+
+  -- cyberdrean
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("cyberdream").setup {
+        -- Recommended - see "Configuring" below for more config options
+        transparent = true,
+        italic_comments = true,
+        hide_fillchars = true,
+        borderless_telescope = true,
+        terminal_colors = true,
       }
+      vim.cmd "colorscheme cyberdream" -- set the colorscheme
     end,
   },
 
